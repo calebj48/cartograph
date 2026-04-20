@@ -212,7 +212,7 @@ export default function Dashboard({ articles: initialArticles, allTags, comments
                     {fmt(selected.created_at)}
                   </div>
 
-                  <TagEditor articleId={selected.id} initialTags={selected.tags ?? []} allTags={allTags} />
+                  <TagEditor key={selected.id} articleId={selected.id} initialTags={selected.tags ?? []} allTags={allTags} />
                 </div>
 
                 {selected.summary && (
@@ -227,7 +227,7 @@ export default function Dashboard({ articles: initialArticles, allTags, comments
 
                 <div style={{ borderTop: '1px solid var(--border)', marginBottom: '28px' }} />
 
-                <CommentThread articleId={selected.id} initialComments={commentsByArticle[selected.id] ?? []} />
+                <CommentThread key={selected.id} articleId={selected.id} initialComments={commentsByArticle[selected.id] ?? []} />
               </>
             )}
           </article>
