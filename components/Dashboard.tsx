@@ -212,7 +212,17 @@ export default function Dashboard({ articles: initialArticles, allTags, comments
                     {fmt(selected.created_at)}
                   </div>
 
-                  <TagEditor key={selected.id} articleId={selected.id} initialTags={selected.tags ?? []} allTags={allTags} />
+                  <TagEditor
+                    key={selected.id}
+                    articleId={selected.id}
+                    initialTags={selected.tags ?? []}
+                    allTags={allTags}
+                    onTagsChange={(tags) =>
+                      setArticles((prev) =>
+                        prev.map((a) => (a.id === selected.id ? { ...a, tags } : a))
+                      )
+                    }
+                  />
                 </div>
 
                 {selected.summary && (
