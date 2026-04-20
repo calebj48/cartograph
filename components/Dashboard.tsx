@@ -115,7 +115,7 @@ export default function Dashboard({ articles: initialArticles, allTags, comments
           <div
             key={a.id}
             className={`article-item${selectedId === a.id ? ' selected' : ''}`}
-            onClick={() => setSelectedId(a.id)}
+            onClick={() => { setSelectedId(a.id); setEditing(false) }}
           >
             <div
               style={{
@@ -152,7 +152,7 @@ export default function Dashboard({ articles: initialArticles, allTags, comments
             </Link>
           </div>
         ) : (
-          <article>
+          <article key={selected.id}>
             {editing ? (
               /* ── Edit mode ── */
               <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', maxWidth: '720px' }}>
